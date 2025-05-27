@@ -1,0 +1,35 @@
+/* Container styles */
+.container {
+    display: flex;
+    justify-content: space-between;
+    background-color: blanchedalmond;
+    margin-left: 50pt;
+    margin-right: 50pt;
+}
+
+/* Column styles */
+.column {
+    width: 49%; /* Adjust width to leave space for grid gap */
+    
+}
+
+
+/* Food item styles */
+.food-item {
+    background-color: #c3ff1f; /* Light gray background */
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.food-item img {
+    width: 100%; /* Make images fill their container */
+    border-radius: 5px;  
+}
+
+.p h1{
+    font-size: x-large;
+    text-align: center;
+}
+

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ResQBites - Recipes</title>
+<link rel="stylesheet" href="style.css">
+<style>
+    /* Body styles */
+    /* Body styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('food.jpg');
+    background-size: cover;
+    opacity: 0.7; /* Adjust the opacity value as needed */
+    z-index: -1;
+}
+
+/* Container styles */
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f0ba3c;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    align-self: center;
+}
+
+    /* Heading styles */
+    h1 {
+        color: #333333;
+        margin-bottom: 30px;
+    }
+
+    /* Options styles */
+    .options {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .option {
+        background-color: #f0f0f0;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .option:hover {
+        transform: translateY(-5px);
+    }
+
+    .option h2 {
+        color: #555555;
+        margin-bottom: 10px;
+    }
+
+    .option p {
+        color: #777777;
+        margin-bottom: 20px;
+    }
+
+    .option button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #4CAF50;
+        color: #ffffff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .option button:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Recipe Options</h1>
+        <div class="options">
+            <div class="option">
+                <h2>View Recipes</h2>
+                <p>Explore delicious recipes.</p>
+                <button onclick="viewRecipes()">View Recipes</button>
+            </div>
+            <div class="option">
+                <h2>Suggest Recipe</h2>
+                <p>Share your own recipe.</p>
+                <button onclick="suggestRecipe()">Suggest Recipe</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function viewRecipes() {
+            window.location.href = "view_recipes.html"; // Replace "view_recipes.html" with the actual page containing recipes
+        }
+
+        function suggestRecipe() {
+            window.location.href = "suggest_recipe.html"; // Replace "suggest_recipe.html" with the actual page for suggesting recipes
+        }
+    </script>
+</body>
+</html>

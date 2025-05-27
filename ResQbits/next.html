@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ResQBites - Home</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to ResQBites</h1>
+        <div class="options">
+            <div class="option">
+                <h2>Groceries</h2>
+                <img src="gro.jpg" alt="Groceries Image" style="width: 200px; height: auto;">
+                <p><br>View and manage groceries with expiry dates.</p>
+                <button onclick="redirectToGroceries()">Go to Groceries</button>
+            </div>
+            <div class="option">
+                <h2>Food Donation</h2>
+                <img src="donation.jpg" alt="Groceries Image" style="width: 200px; height: auto;">
+                <p>Donate or buy discounted leftover food.</p>
+                <button onclick="redirectToFoodDonation()">Go to Food Donation</button>
+            </div>
+            <div class="option">
+                <h2>Recipe Suggestion</h2>
+                <img src="recipe.webp" alt="Groceries Image" style="width: 200px; height: auto;">
+                <p>Explore and add recipes.</p><br>
+                <button onclick="redirectToRecipes()">Go to Recipe Suggestion</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function redirectToGroceries() {
+            window.location.href = "groceries.html";
+        }
+
+        function redirectToFoodDonation() {
+            window.location.href = "food_donation.html";
+        }
+
+        function redirectToRecipes() {
+            window.location.href = "recipes.html";
+        }
+    </script>
+</body>
+</html>
+

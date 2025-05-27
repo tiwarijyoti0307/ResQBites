@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ResQBites - Food Donation</title>
+<link rel="stylesheet" href="food.css">
+<style>
+    /* Adjust layout for two sections */
+    .container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Make the container full height of the viewport */
+}
+
+    .section {
+    width: 45%; /* Adjust width as needed */
+    height: 60%; /* Make the height same as the parent container */
+    margin: 0 auto; /* Center horizontally */
+    background-color: #f0f0f0; /* Light gray background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+
+
+    /* Style the first section */
+    .donate-section {
+        background-color: #b6e5a5; /* Light green background */
+    }
+
+    /* Style the second section */
+    .discounted-section {
+        background-color: #b3d9ff; /* Light blue background */
+        color: #000000; /* Black text color */
+    }
+
+    /* Style form elements */
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .form-group textarea {
+        width: 90%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        resize: vertical; /* Allow vertical resizing */
+    }
+
+    .form-group button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #006600; /* Dark green background */
+        color: #ffffff; /* White text color */
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .form-group button:hover {
+        background-color: #004d00; /* Darker green on hover */
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="section donate-section">
+            <h1>Donate Food</h1>
+            <p>Contact NGOs to donate food</p>
+            <!-- Form to contact NGOs -->
+            <form id="ngoContactForm">
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" cols="50" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+        <div class="section discounted-section">
+            <h1>Discounted Food Items</h1>
+            
+            <!-- Display discounted food items -->
+            <div id="discountedItems">
+                <!-- Food items will be displayed here -->
+            </div>
+            <!-- Button to view discounted food items with images -->
+            <button onclick="redirectToDiscountedItemsPage()">View Discounted Food Items</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Function to redirect to the page containing all discounted food items with images
+        function redirectToDiscountedItemsPage() {
+            window.location.href = "discounted_items.html"; // Replace "discounted_items.html" with the actual page containing discounted items
+        }
+    </script>
+</body>
+</html>

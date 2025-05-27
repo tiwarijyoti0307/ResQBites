@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ResQBites - Suggest Recipe</title>
+<link rel="stylesheet" href="style.css">
+<style>
+    /* Body styles */
+   /* Body styles */
+/* Body styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('recipe.webp');
+    background-size: cover; 
+    opacity: 0.6; /* Adjust opacity here */
+    z-index: -1;
+}
+
+/* Container styles */
+.container {
+    max-width: 550px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(246, 149, 85, 1); /* Adjust opacity here */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+}
+
+
+    /* Heading styles */
+    h1 {
+        color: #333333;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* Form styles */
+    #suggestRecipeForm {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-group {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    button[type="submit"] {
+        width: 50%;
+        margin-top: 20px;
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
+        background-color: #4CAF50;
+        color: #ffffff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    /* Recipe display styles */
+    #recipeDisplay {
+        margin-top: 50px;
+        border-top: 2px solid #ccc;
+        padding-top: 20px;
+    }
+
+    #recipeDisplay h2 {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    #recipeDisplay p {
+        margin-bottom: 5px;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Suggest a Recipe</h1>
+        <form id="suggestRecipeForm">
+            <div class="form-group">
+                <label for="recipeName">Recipe Name:</label>
+                <input type="text" id="recipeName" name="recipeName" required>
+            </div>
+            <div class="form-group">
+                <label for="ingredients">Ingredients:</label>
+                <textarea id="ingredients" name="ingredients" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="instructions">Instructions:</label>
+                <textarea id="instructions" name="instructions" rows="4" required></textarea>
+            </div>
+            <button type="submit">Submit Recipe</button>
+        </form>
+
+        <div id="recipeDisplay"></div>
+    </div>
+
+    <script>
+        // Function to handle form submission
+        document.getElementById('suggestRecipeForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get form values
+            var recipeName = document.getElementById('recipeName').value;
+            var ingredients = document.getElementById('ingredients').value;
+            var instructions = document.getElementById('instructions').value;
+
+            // Create recipe display HTML
+            var recipeDisplayHTML = '<h2>Submitted Recipe</h2>' +
+                                    '<p><strong>Recipe Name:</strong> ' + recipeName + '</p>' +
+                                    '<p><strong>Ingredients:</strong></p>' +
+                                    '<p>' + ingredients + '</p>' +
+                                    '<p><strong>Instructions:</strong></p>' +
+                                    '<p>' + instructions + '</p>';
+
+            // Display the submitted recipe
+            document.getElementById('recipeDisplay').innerHTML = recipeDisplayHTML;
+
+            // Clear form fields
+            document.getElementById('recipeName').value = '';
+            document.getElementById('ingredients').value = '';
+            document.getElementById('instructions').value = '';
+        });
+    </script>
+</body>
+</html>

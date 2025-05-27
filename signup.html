@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" href="lg.css">
+    <style>
+        /* Body styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('12.jpg');
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the background image */
+        }
+
+        /* Background overlay */
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.5); /* Light gray background with increased opacity */
+        }
+
+        /* Form container styles */
+        .form-container {
+            background-color: #000000;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(111, 109, 109, 0.1);
+            width: 300px;
+            text-align: center;
+            position: relative; /* Position relative for z-index stacking */
+            z-index: 1; /* Ensure form container appears above the background overlay */
+        }
+
+        /* Input field styles */
+        .form-container input[type="text"],
+        .form-container input[type="password"],
+        .form-container button {
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Submit button styles */
+        .form-container button {
+            background-color: #4CAF50; /* Green */
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        /* Hover effect for submit button */
+        .form-container button:hover {
+            background-color: #a06645; /* Darker green */
+        }
+
+        /* Link styles */
+        .form-container a {
+            text-decoration: none;
+            color: #0022ff; /* Blue */
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        /* Title styles */
+        h2 {
+            color: #fff7f7; /* Dark gray */
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        /* Error message styles */
+        .error-message {
+            color: red;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+
+        /* Hide login form by default */
+        .login-form {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <div class="form-container" id="signupForm">
+        <h2>Sign Up</h2>
+        <input id="signupUsername" type="text" placeholder="Enter Username" required>
+        <input id="signupPassword" type="password" placeholder="Enter Password" required>
+        <button type="submit" onclick="validateSignupForm()">Sign Up</button>
+        <div class="error-message" id="signupErrorMessage"></div>
+        <p style="color:white;">Already have an account? <a href="#" onclick="toggleForms()">Login</a></p>
+    </div>
+
+    <div class="form-container login-form" id="loginForm">
+        <h2>Login</h2>
+        <input id="loginUsername" type="text" placeholder="Enter Username" required>
+        <input id="loginPassword" type="password" placeholder="Enter Password" required>
+        <button type="submit" onclick="validateLoginForm()">Login</button>
+        <div class="error-message" id="loginErrorMessage"></div>
+        <p style="color:white;">Don't have an account? <a href="#" onclick="toggleForms()">Sign up</a></p>
+    </div>
+
+    <script>
+        // Function to toggle between login and signup forms
+        function toggleForms() {
+            var loginForm = document.getElementById("loginForm");
+            var signupForm = document.getElementById("signupForm");
+
+            if (loginForm.style.display === "none") {
+                loginForm.style.display = "block";
+                signupForm.style.display = "none";
+            } else {
+                loginForm.style.display = "none";
+                signupForm.style.display = "block";
+            }
+        }
+
+        // Function to validate login form
+        function validateLoginForm() {
+            // Your login form validation code
+            alert("Login successful!");
+            // Redirect to next page
+            window.location.href = "next.html";
+            return true;
+        }
+
+        // Function to validate signup form
+        function validateSignupForm() {
+            // Your signup form validation code
+            alert("Signup successful!");
+            return true;
+        }
+    </script>
+</body>
+</html>

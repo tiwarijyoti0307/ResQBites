@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResQBites - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('zerowaste.jpeg'); /* Replace 'background.jpg' with the path to your image */
+            background-size: 1000pt;/* Cover the entire page with the background image */
+            background-position: 0%; 
+            /* Center the background image */
+        }
+
+        header {
+            background-color: #ff6347; /* Tomato red */
+            color: #fff;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        nav ul {
+            list-style: none;
+            float: right;
+            margin-top: 10px;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #eee;
+        }
+
+        section {
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .textbox {
+            background-color: rgb(248, 236, 176); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            margin-left: 300pt;
+            margin-right: 300pt;
+            text-align: justify;
+            color: black;
+        }
+
+        .textbox h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 1px;
+            margin-top: 5px;
+        }
+
+        .textbox p {
+            font-size: 18px;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        footer {
+            background-color: rgba(51, 51, 51, 0.9);
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>ResQBites</h1>
+            <nav>
+                <ul>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="signup.html">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="textbox">
+        <div class="container">
+            <h2>About ResQBites</h2>
+            <p>ResQBites is a platform dedicated to reducing food waste and helping those in need. We provide features such as managing groceries with expiry dates, donating leftover food from restaurants, and suggesting recipes to make the most of your ingredients.</p>
+        </div>
+    </section>
+    
+    <section class="textbox">
+        <div class="container">
+            <h2>Our Features</h2>
+            <p>Explore the key features of ResQBites:</p>
+            <ul>
+                <li>Manage groceries with expiry dates</li>
+                <li>Donate leftover food from restaurants</li>
+                <li>Get recipe suggestions</li>
+            </ul>
+        </div>
+    </section>
+    
+    <section class="textbox">
+        <div class="container">
+            <h2>How It Works</h2>
+            <p>ResQBites makes it easy to:</p>
+            <ol>
+                <li>Add groceries and receive expiry date notifications</li>
+                <li>Donate or purchase discounted leftover food</li>
+                <li>Discover new recipes and share your own</li>
+            </ol>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 ResQBites. All rights reserved.</p>
+        </div>
+    </footer>
+    <button onclick="showLogin()">Login</button>
+    <button onclick="showSignup()">Sign Up</button>
+
+</body>
+</html>

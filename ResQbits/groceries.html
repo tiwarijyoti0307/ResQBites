@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>ResQBites - Groceries</title>
+		<link
+			rel="stylesheet"
+			href="styles.css"
+		/>
+		<style>
+			/* Body styles */
+			body {
+				margin: 0;
+				padding: 0;
+				font-family: Arial, sans-serif;
+				background-image: url("todo.webp");
+				background-size: cover; /* Cover the entire viewport */
+				background-position: center; /* Center the background image */
+				background-repeat: no-repeat; /* Do not repeat the background image */
+			}
+
+			/* Container styles */
+			.container {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				max-width: 800px;
+				margin: 50px auto;
+				padding: 20px;
+				background-color: rgba(
+					255,
+					255,
+					255,
+					1
+				); /* Adjust opacity here */
+				border-radius: 10px;
+				box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+			}
+
+			/* Heading styles */
+			h1 {
+				color: #333;
+				text-align: center;
+				margin-bottom: 20px;
+			}
+
+			/* Form styles */
+			form {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				width: 100%;
+				max-width: 600px;
+			}
+
+			label {
+				width: 100px;
+				font-weight: bold;
+				margin: 10px;
+			}
+
+			input[type="text"],
+			input[type="number"],
+			input[type="date"] {
+				width: 150px; /* Adjusted width */
+				padding: 8px; /* Adjusted padding */
+				margin: 10px;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				box-sizing: border-box;
+				font-size: 16px;
+			}
+
+			button[type="submit"] {
+				width: 120px; /* Adjusted width */
+				margin: 10px;
+				padding: 12px; /* Adjusted padding */
+				background-color: #4caf50;
+				color: #fff;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+				font-size: 16px;
+				transition: background-color 0.3s;
+			}
+
+			button[type="submit"]:hover {
+				background-color: #45a049;
+			}
+
+			/* Added items section */
+			.added-items {
+				margin-top: 30px;
+				border-top: 1px solid #ccc;
+				padding-top: 20px;
+				width: 100%;
+			}
+
+			.added-item {
+				margin-bottom: 10px;
+				padding: 10px;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				background-color: #f9f9f9;
+			}
+
+			.added-item p {
+				margin: 5px 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Add Grocery Details</h1>
+			<form id="groceryForm">
+				<label for="itemName">Item Name:</label>
+				<input
+					type="text"
+					id="itemName"
+					name="itemName"
+					required
+				/>
+
+				<label for="quantity">Quantity:</label>
+				<input
+					type="text"
+					id="quantity"
+					name="quantity"
+					required
+				/>
+
+				<label for="expiryDate">Expiry Date:</label>
+				<input
+					type="date"
+					id="expiryDate"
+					name="expiryDate"
+					required
+					min=""
+				/>
+
+				<label for="company">Company Name:</label>
+				<input
+					type="text"
+					id="company"
+					name="company"
+					placeholder="Optional"
+				/>
+
+				<button type="submit">Add Grocery</button>
+			</form>
+
+			<div class="added-items">
+				<h2>Added Items</h2>
+				<div id="addedItems"></div>
+			</div>
+		</div>
+		s
+
+		<script>
+			var today = new Date();
+			var year = today.getFullYear();
+			var month = (today.getMonth() + 1).toString().padStart(2, "0"); // Add leading zero if needed
+			var day = today.getDate().toString().padStart(2, "0"); // Add leading zero if needed
+
+			var formattedDate = year + "-" + month + "-" + day;
+
+			var inputDate = document.getElementById("expiryDate");
+			inputDate.setAttribute("min", formattedDate);
+			console.log(inputDate.attributes);
+			// Function to handle form submission
+			document
+				.getElementById("groceryForm")
+				.addEventListener("submit", async (event) => {
+					event.preventDefault(); // Prevent default form submission
+
+					// Get form values
+					var itemName = document.getElementById("itemName").value;
+					var quantity = document.getElementById("quantity").value;
+					var expiryDate =
+						document.getElementById("expiryDate").value;
+					var company = document.getElementById("company").value;
+
+					// sending to database
+					const res = await fetch(
+						"http://localhost:8090/a/api/collections/groceries/records",
+						{
+							method: "POST",
+							headers: {
+								"Content-Type": "application/json",
+							},
+							body: JSON.stringify({
+								item_name: itemName,
+								quantity: quantity,
+								expiry_date: expiryDate,
+								company: company,
+							}),
+						}
+					);
+					// Create new item element
+					var newItem = document.createElement("div");
+					newItem.classList.add("added-item");
+					newItem.innerHTML =
+						"<p><strong>Item Name:</strong> " +
+						itemName +
+						"</p>" +
+						"<p><strong>Quantity:</strong> " +
+						quantity +
+						"</p>" +
+						"<p><strong>Expiry Date:</strong> " +
+						expiryDate +
+						"</p>" +
+						"<p><strong>Company:</strong> " +
+						company +
+						"</p>";
+
+					// Append new item to added items section
+					document.getElementById("addedItems").appendChild(newItem);
+
+					// Store grocery details in local storage
+					var groceryDetails = {
+						itemName: itemName,
+						quantity: quantity,
+						expiryDate: expiryDate,
+						company: company,
+					};
+					localStorage.setItem(
+						"groceryDetails",
+						JSON.stringify(groceryDetails)
+					);
+
+					// Clear form fields
+					document.getElementById("itemName").value = "";
+					document.getElementById("quantity").value = "";
+					document.getElementById("expiryDate").value = "";
+					document.getElementById("company").value = "";
+				});
+
+			// Function to retrieve and display saved groceries from local storage
+			window.onload = function () {
+				var groceryDetails = JSON.parse(
+					localStorage.getItem("groceryDetails")
+				);
+				if (groceryDetails) {
+					var addedItems = document.getElementById("addedItems");
+					var newItem = document.createElement("div");
+					newItem.classList.add("added-item");
+					newItem.innerHTML =
+						"<p><strong>Item Name:</strong> " +
+						groceryDetails.itemName +
+						"</p>" +
+						"<p><strong>Quantity:</strong> " +
+						groceryDetails.quantity +
+						"</p>" +
+						"<p><strong>Expiry Date:</strong> " +
+						groceryDetails.expiryDate +
+						"</p>" +
+						"<p><strong>Company:</strong> " +
+						groceryDetails.company +
+						"</p>";
+					addedItems.appendChild(newItem);
+				}
+			};
+		</script>
+	</body>
+</html>
